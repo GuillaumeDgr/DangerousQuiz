@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">DangerousQuiz</string>
+
+    // Main Activity
+    <string name="playername">playerName</string>
+    <string name="playerscore">playerScore</string>
+    <string name="best_scores">Best Scores :</string>
+    <string name="player_name">Player Name</string>
+    <string name="player_score">Player Score</string>
+    <string name="welcome_what_s_your_name">Welcome! What\'s your name?</string>
+    <string name="please_type_your_name">Please type your name</string>
+    <string name="let_s_play">Let\'s play</string>
+    <string name="best_score">Best Scores</string>
+    <string name="top_quiz">TOP QUIZ</string>
+    <string name="quizname">QuizName</string>
+    <string name="quiztheme">QuizTheme</string>
+    <string name="questionlist">QuestionList</string>
+    <string name="quizcreatorid">QuizCreatorId</string>
+    <string name="quizid">QuizId</string>
+
+    // Sign In
+    <string name="sign_out">Sign out</string>
+    <string name="disconnexion">Deconnexion...</string>
+
+    // GameActivity
+    <string name="question">Question?</string>
+    <string name="answer1">ANSWER 1</string>
+    <string name="answer2">ANSWER 2</string>
+    <string name="answer3">ANSWER 3</string>
+    <string name="answer4">ANSWER 4</string>
+
+    // Drawer Menu
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="home">Home</string>
+    <string name="play">Play</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_your_quiz">Create your Quiz</string>
+    <string name="error_email_badly_formated">Format de l\'email non valide</string>
+    <string name="error_too_short_password">Mot de passe trop court (minimum 6 caractères).</string>
+
+    // Create Account
+    <string name="registration_in_progress">Inscription ...</string>
+
+    // Create Quiz
+    <string-array name="answer_index">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+</resources>

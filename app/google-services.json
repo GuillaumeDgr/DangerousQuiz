@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "235101740436",
+    "firebase_url": "https://dangerousquiz.firebaseio.com",
+    "project_id": "dangerousquiz",
+    "storage_bucket": "dangerousquiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235101740436:android:85c75721b1405f97",
+        "android_client_info": {
+          "package_name": "fr.wcs.dangerousquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235101740436-m41pcgs63ftclja8elqvelfv1jguqb07.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wcs.dangerousquiz",
+            "certificate_hash": "cf3000441af4b4f0e0704b7991af35e273d680ca"
+          }
+        },
+        {
+          "client_id": "235101740436-s5qofh46jqquj06js4o30iicmmc5g5k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6vOApJCgnoJgOgLphH0Cig-JqcEOq9vE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235101740436-s5qofh46jqquj06js4o30iicmmc5g5k8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

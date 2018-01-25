@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/textViewQuizName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:hint="@string/quizname"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewQuizTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/quiztheme"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewQuizQuestionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/questionlist"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewQuizCreatorId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/quizcreatorid"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewQuizId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/quizid"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewLeftSwipe"
+        android:layout_width="192dp"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_filter"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <ImageView
+        android:id="@+id/imageViewRightSwipe"
+        android:layout_width="192dp"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_filter"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+</android.support.v7.widget.CardView>

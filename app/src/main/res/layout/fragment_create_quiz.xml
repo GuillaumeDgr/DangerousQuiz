@@ -1,0 +1,132 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="fr.wcs.dangerousquiz.Activities.CreateQuizFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextQuizName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="QuizName"/>
+
+        <EditText
+            android:id="@+id/editTextQuizTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="QuizTheme"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewQuestion1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
+
+            <TextView
+                android:id="@+id/textViewCard1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Add question 1"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewQuestion2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
+
+            <TextView
+                android:id="@+id/textViewCard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Add question 2"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewQuestion3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
+
+            <TextView
+                android:id="@+id/textViewCard3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Add question 3"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewQuestion4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_margin="5dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
+
+            <TextView
+                android:id="@+id/textViewCard4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Add question 4"/>
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/buttonCreateQuiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Create The Quiz"/>
+
+    </LinearLayout>
+
+</FrameLayout>
