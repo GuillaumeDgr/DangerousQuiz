@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:cardElevation="4dp"
     app:cardCornerRadius="8dp">
 
@@ -29,6 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/quiztheme"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewQuizDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/quizcreatorid"
             android:gravity="center"
             android:layout_margin="10dp"/>
 
@@ -64,7 +72,7 @@
         android:layout_height="match_parent"
         android:alpha="0"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_filter"
+        android:src="@drawable/cross_red"
         android:visibility="visible"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -76,7 +84,7 @@
         android:layout_height="match_parent"
         android:alpha="0"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_filter"
+        android:src="@drawable/check_green"
         android:visibility="visible"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"

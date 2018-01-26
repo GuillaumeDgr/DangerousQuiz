@@ -9,6 +9,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,13 +35,14 @@ public class MainFragment extends Fragment {
 
     private AuthController mAuthController;
     private UserController mUserController;
+    private QuizController mQuizController;
     private UserModel mUser;
+    private DatabaseReference mDatabaseReference;
     private SwipeStack mSwipeDeckCards;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private SwipeDeckAdapter mSwipeDeckAdapter;
     private List<QuizModel> mQuizModelList = new ArrayList<>();
-    private DatabaseReference mDatabaseReference;
-    private QuizController mQuizController;
+    private Button mButtonNextQuiz, mButtonPlayQuiz;
 
     public MainFragment() {}
 
@@ -135,6 +137,12 @@ public class MainFragment extends Fragment {
         });
 
         loadQuizList();
+
+        // Buttons actions
+        mButtonNextQuiz = view.findViewById(R.id.buttonNextQuiz);
+        mButtonNextQuiz.setOnClickListener(v -> mSwipeDeckCards.swipeTopViewToLeft());
+        mButtonPlayQuiz = view.findViewById(R.id.buttonPlayQuiz);
+        mButtonPlayQuiz.setOnClickListener(v -> mSwipeDeckCards.swipeTopViewToRight());
 
         return view;
     }

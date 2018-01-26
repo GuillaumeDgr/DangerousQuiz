@@ -6,15 +6,15 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question implements Parcelable{
+public class QuestionModel implements Parcelable {
 
     private String question;
     private List<String> choiceList = new ArrayList<>();
     private int answerIndex;
 
-    public Question() {}
+    public QuestionModel() {}
 
-    protected Question(Parcel in) {
+    protected QuestionModel(Parcel in) {
         question = in.readString();
         choiceList = in.createStringArrayList();
         answerIndex = in.readInt();
@@ -32,15 +32,15 @@ public class Question implements Parcelable{
         return 0;
     }
 
-    public static final Creator<Question> CREATOR = new Creator<Question>() {
+    public static final Creator<QuestionModel> CREATOR = new Creator<QuestionModel>() {
         @Override
-        public Question createFromParcel(Parcel in) {
-            return new Question(in);
+        public QuestionModel createFromParcel(Parcel in) {
+            return new QuestionModel(in);
         }
 
         @Override
-        public Question[] newArray(int size) {
-            return new Question[size];
+        public QuestionModel[] newArray(int size) {
+            return new QuestionModel[size];
         }
     };
 

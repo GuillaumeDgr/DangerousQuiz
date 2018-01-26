@@ -5,20 +5,15 @@
         <item
             android:id="@+id/drawer_home"
             android:icon="@drawable/ic_home"
-            android:title="@string/home"
-            />
-        <item
-            android:id="@+id/drawer_play"
-            android:icon="@drawable/ic_play"
-            android:title="@string/play"/>
-        <item
-            android:id="@+id/drawer_best_scores"
-            android:icon="@drawable/ic_scores"
-            android:title="@string/best_score"/>
+            android:title="@string/home"/>
         <item
             android:id="@+id/drawer_create_quiz"
             android:icon="@drawable/ic_scores"
             android:title="@string/create_your_quiz"/>
+        <item
+            android:id="@+id/drawer_best_scores"
+            android:icon="@drawable/ic_scores"
+            android:title="@string/best_score"/>
         <item
             android:id="@+id/drawer_sign_out"
             android:icon="@drawable/ic_scores"

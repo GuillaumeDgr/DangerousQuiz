@@ -14,16 +14,19 @@ public class QuizModel implements Parcelable {
 
     private String quizName;
     private String quizTheme;
-    private List<Question> questionList = new ArrayList<>();
+    private List<QuestionModel> questionList = new ArrayList<>();
     private String creatorId;
+    private String creatorName;
     private String quizId;
+    private String quizLevel;
 
     public QuizModel() {}
 
-    public QuizModel(String quizName, String quizTheme, List<Question> questionList) {
+    public QuizModel(String quizName, String quizTheme, List<QuestionModel> questionModelList, String quizLevel) {
         this.quizName = quizName;
         this.quizTheme = quizTheme;
-        this.questionList = questionList;
+        this.questionList = questionModelList;
+        this.quizLevel = quizLevel;
     }
 
     protected QuizModel(Parcel in) {
@@ -31,6 +34,7 @@ public class QuizModel implements Parcelable {
         quizTheme = in.readString();
         creatorId = in.readString();
         quizId = in.readString();
+        quizLevel = in.readString();
     }
 
     public static final Creator<QuizModel> CREATOR = new Creator<QuizModel>() {
@@ -61,11 +65,11 @@ public class QuizModel implements Parcelable {
         this.quizTheme = quizTheme;
     }
 
-    public List<Question> getQuestionList() {
+    public List<QuestionModel> getQuestionList() {
         return questionList;
     }
 
-    public void setQuestionList(List<Question> questionList) {
+    public void setQuestionList(List<QuestionModel> questionList) {
         this.questionList = questionList;
     }
 
@@ -81,8 +85,24 @@ public class QuizModel implements Parcelable {
         return quizId;
     }
 
+    public String getCreatorName() {
+        return creatorName;
+    }
+
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+    }
+
     public void setQuizId(String quizId) {
         this.quizId = quizId;
+    }
+
+    public String getQuizLevel() {
+        return quizLevel;
+    }
+
+    public void setQuizLevel(String quizLevel) {
+        this.quizLevel = quizLevel;
     }
 
     @Override
@@ -96,5 +116,6 @@ public class QuizModel implements Parcelable {
         dest.writeString(quizTheme);
         dest.writeString(creatorId);
         dest.writeString(quizId);
+        dest.writeString(quizLevel);
     }
 }

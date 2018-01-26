@@ -23,7 +23,7 @@
     <string name="disconnexion">Deconnexion...</string>
 
     // GameActivity
-    <string name="question">Question?</string>
+    <string name="questionModel">Question?</string>
     <string name="answer1">ANSWER 1</string>
     <string name="answer2">ANSWER 2</string>
     <string name="answer3">ANSWER 3</string>
@@ -43,6 +43,15 @@
 
     // Create Account
     <string name="registration_in_progress">Inscription ...</string>
+    <string name="add_questionmodel_1">Add first question</string>
+    <string name="add_questionmodel_2">Add second question</string>
+    <string name="add_questionmodel_3">Add third question</string>
+    <string name="add_questionmodel_4">Add fourth question</string>
+    <string name="create_the_quiz">Create your quiz!</string>
+    <string name="choose_your_quiz_name">Choose your quiz name :</string>
+    <string name="choose_your_quiz_theme">Choose your quiz theme :</string>
+    <string name="choose_your_quiz_difficulty">Choose your quiz difficulty :</string>
+    <string name="add_your_quiz_questions">Add your quiz questions :</string>
 
     // Create Quiz
     <string-array name="answer_index">
@@ -51,5 +60,36 @@
         <item>3</item>
         <item>4</item>
     </string-array>
+    <string-array name="quiz_theme">
+        <item>History</item>
+        <item>Music</item>
+        <item>Sport</item>
+        <item>Science</item>
+        <item>Art</item>
+        <item>Cinema</item>
+        <item>Geography</item>
+        <item>Nature</item>
+        <item>News</item>
+        <item>People</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="quiz_difficulty">
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advance</item>
+    </string-array>
+    <string name="quiz_creation">Quiz creation...</string>
+    <string name="quiz_question_added">Question added!</string>
+    <string name="quiz_created">Quiz created!</string>
+    <string name="quiz_not_created">Quiz not created!</string>
+    <string name="add_your_question_here">Add your question here!</string>
+    <string name="first_answer">First answer</string>
+    <string name="fourth_answer">Fourth answer</string>
+    <string name="third_answer">Third answer</string>
+    <string name="second_answer">Second answer</string>
+    <string name="confirm">Confirm</string>
+    <string name="next_quiz">Next\nquiz</string>
+    <string name="play_this_quiz">Play\nquiz</string>
+
 
 </resources>

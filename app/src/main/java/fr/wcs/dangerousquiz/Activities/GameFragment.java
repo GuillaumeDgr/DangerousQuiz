@@ -1,21 +1,15 @@
 package fr.wcs.dangerousquiz.Activities;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import java.util.Arrays;
 
-import fr.wcs.dangerousquiz.Controllers.AuthController;
 import fr.wcs.dangerousquiz.Controllers.UserController;
-import fr.wcs.dangerousquiz.Models.Question;
+import fr.wcs.dangerousquiz.Models.QuestionModel;
 //import fr.wcs.dangerousquiz.Models.QuestionBank;
 import fr.wcs.dangerousquiz.R;
 
@@ -23,7 +17,7 @@ public class GameFragment extends Fragment  {
 
     private TextView mQuestionTextView, mCardViewText1, mCardViewText2, mCardViewText3, mCardViewText4;
     private CardView mCardView1, mCardView2, mCardView3, mCardView4;
-    private Question mCurrentQuestion;
+    private QuestionModel mCurrentQuestionModel;
 //    private QuestionBank mQuestionBank;
     private int mNumberOfQuestions, mScore;
     private UserController mUserController;
@@ -63,41 +57,41 @@ public class GameFragment extends Fragment  {
 //        mCardView3.setTag(2);
 //        mCardView4.setTag(3);
 //
-//        mCurrentQuestion = mQuestionBank.getQuestion();
-//        this.displayQuestion(mCurrentQuestion);
+//        mCurrentQuestionModel = mQuestionBank.getQuestion();
+//        this.displayQuestion(mCurrentQuestionModel);
 
         return view;
     }
 
 //    private QuestionBank generateQuestions() {
-//        Question question1 = new Question("What is the name of the current french president?",
+//        QuestionModel question1 = new QuestionModel("What is the name of the current french president?",
 //                Arrays.asList("François Hollande", "Emmanuel Macron", "Jacques Chirac", "François Mitterand"),
 //                1);
-//        Question question2 = new Question("How many countries are there in the European Union?",
+//        QuestionModel question2 = new QuestionModel("How many countries are there in the European Union?",
 //                Arrays.asList("15", "24", "28", "32"),
 //                2);
-//        Question question3 = new Question("Who is the creator of the Android operating system?",
+//        QuestionModel question3 = new QuestionModel("Who is the creator of the Android operating system?",
 //                Arrays.asList("Andy Rubin", "Steve Wozniak", "Jake Wharton", "Paul Smith"),
 //                0);
-//        Question question4 = new Question("When did the first man land on the moon?",
+//        QuestionModel question4 = new QuestionModel("When did the first man land on the moon?",
 //                Arrays.asList("1958", "1962", "1967", "1969"),
 //                3);
-//        Question question5 = new Question("What is the capital of Romania?",
+//        QuestionModel question5 = new QuestionModel("What is the capital of Romania?",
 //                Arrays.asList("Bucarest", "Warsaw", "Budapest", "Berlin"),
 //                0);
-//        Question question6 = new Question("Who did the Mona Lisa paint?",
+//        QuestionModel question6 = new QuestionModel("Who did the Mona Lisa paint?",
 //                Arrays.asList("Michelangelo", "Leonardo Da Vinci", "Raphael", "Carravagio"),
 //                1);
-//        Question question7 = new Question("In which city is the composer Frédéric Chopin buried?",
+//        QuestionModel question7 = new QuestionModel("In which city is the composer Frédéric Chopin buried?",
 //                Arrays.asList("Strasbourg", "Warsaw", "Paris", "Moscow"),
 //                2);
-//        Question question8 = new Question("What is the country top-level domain of Belgium?",
+//        QuestionModel question8 = new QuestionModel("What is the country top-level domain of Belgium?",
 //                Arrays.asList(".bg", ".bm", ".bl", ".be"),
 //                3);
-//        Question question9 = new Question("What is the house number of The Simpsons?",
+//        QuestionModel question9 = new QuestionModel("What is the house number of The Simpsons?",
 //                Arrays.asList("42", "101", "666", "742"),
 //                3);
-//        Question question10 = new Question("Who is the best in the word?",
+//        QuestionModel question10 = new QuestionModel("Who is the best in the word?",
 //                Arrays.asList("Guillaume", "Guillaume", "Guillaume", "Guillaume"),
 //                2);
 //
@@ -105,7 +99,7 @@ public class GameFragment extends Fragment  {
 //                question6, question7, question8, question9, question10));
 //    }
 //
-//    private void displayQuestion(final Question question) {
+//    private void displayQuestion(final QuestionModel question) {
 //        mQuestionTextView.setText(question.getQuestion());
 //        mCardViewText1.setText(question.getChoiceList().get(0));
 //        mCardViewText2.setText(question.getChoiceList().get(1));
@@ -117,7 +111,7 @@ public class GameFragment extends Fragment  {
 //    public void onClick(View v) {
 //        int responseIndex = (int) v.getTag();
 //
-//        if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
+//        if (responseIndex == mCurrentQuestionModel.getAnswerIndex()) {
 //            // Good answer
 //            switch (responseIndex){
 //                case 0:
@@ -178,8 +172,8 @@ public class GameFragment extends Fragment  {
 //                    // End the game
 //                    endGame();
 //                } else {
-//                    mCurrentQuestion = mQuestionBank.getQuestion();
-//                    displayQuestion(mCurrentQuestion);
+//                    mCurrentQuestionModel = mQuestionBank.getQuestion();
+//                    displayQuestion(mCurrentQuestionModel);
 //                }
 //            }
 //        }, 1000); // LENGTH_SHORT is usually 2 second long

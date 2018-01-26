@@ -127,14 +127,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.drawer_home:
                     fragmentClass = MainFragment.class;
                     break;
-                case R.id.drawer_play:
-                    fragmentClass = GameFragment.class;
+                case R.id.drawer_create_quiz:
+                    fragmentClass = CreateQuizFragment.class;
                     break;
                 case R.id.drawer_best_scores:
                     fragmentClass = ScoreFragment.class;
-                    break;
-                case R.id.drawer_create_quiz:
-                    fragmentClass = CreateQuizFragment.class;
                     break;
                 case R.id.drawer_sign_out:
                     signOut();

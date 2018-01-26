@@ -1,6 +1,5 @@
 package fr.wcs.dangerousquiz.Controllers;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -10,8 +9,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
-import fr.wcs.dangerousquiz.Activities.PlayActivity;
-import fr.wcs.dangerousquiz.Models.Question;
+
+import fr.wcs.dangerousquiz.Models.QuestionModel;
 import fr.wcs.dangerousquiz.Models.QuizModel;
 import fr.wcs.dangerousquiz.Models.UserModel;
 import fr.wcs.dangerousquiz.Utils.FirebaseHelper;
@@ -28,6 +27,7 @@ public class QuizController {
     private QuizBuilder mQuizBuilder = null;
     private UserModel mUser;
     private String mUserId;
+    private String mUserName;
     private FirebaseDatabase mDatabaseReference;
     private DatabaseReference mQuizRef;
     private QuizCreatedListener mQuizCreatedListener = null;
@@ -42,6 +42,7 @@ public class QuizController {
 
         mUser = UserController.getInstance().getUser();
         mUserId = mUser.getUid();
+        mUserName = mUser.getFirstName();
 
         mDatabaseReference = FirebaseHelper.getDatabase();
         mQuizRef = mDatabaseReference.getReference().child(QUIZ_ENTRY);
@@ -81,6 +82,7 @@ public class QuizController {
     // Create Quiz Method
     public void createQuiz(final QuizModel quizModel) {
         quizModel.setCreatorId(mUserId);
+        quizModel.setCreatorName(mUserName);
         final String quizId = mQuizRef.push().getKey();
         quizModel.setQuizId(quizId);
 
@@ -144,7 +146,8 @@ public class QuizController {
 
         private String mQuizName;
         private String mQuizTheme;
-        private List<Question> mQuestionList;
+        private List<QuestionModel> mQuestionModelList;
+        private String mLevel;
 
         private QuizBuilder() {
         }
@@ -159,13 +162,18 @@ public class QuizController {
             return this;
         }
 
-        public QuizBuilder questionList(List<Question> questionList) {
-            mQuestionList = questionList;
+        public QuizBuilder questionList(List<QuestionModel> questionModelList) {
+            mQuestionModelList = questionModelList;
+            return this;
+        }
+
+        public QuizBuilder level(String level) {
+            mLevel = level;
             return this;
         }
 
         public void build() {
-            QuizModel quizModel = new QuizModel(mQuizName, mQuizTheme, mQuestionList);
+            QuizModel quizModel = new QuizModel(mQuizName, mQuizTheme, mQuestionModelList, mLevel);
             createQuiz(quizModel);
         }
     }

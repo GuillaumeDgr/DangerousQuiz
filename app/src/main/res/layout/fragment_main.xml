@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/grey"
     tools:context="fr.wcs.dangerousquiz.Activities.MainFragment">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -30,5 +31,38 @@
             app:stack_spacing="6dp"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBottomButtons"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        swipedeck:layout_constraintBottom_toBottomOf="parent"
+        swipedeck:layout_constraintLeft_toLeftOf="parent"
+        swipedeck:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/buttonNextQuiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/next_quiz"
+            android:background="@drawable/button_background_red"/>
+
+        <Button
+            android:id="@+id/buttonPlayQuiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:elevation="4dp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/play_this_quiz"
+            android:background="@drawable/button_background_green"/>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -15,7 +15,7 @@ import java.util.List;
 
 import fr.wcs.dangerousquiz.Controllers.QuizController;
 import fr.wcs.dangerousquiz.Controllers.UserController;
-import fr.wcs.dangerousquiz.Models.Question;
+import fr.wcs.dangerousquiz.Models.QuestionModel;
 import fr.wcs.dangerousquiz.Models.QuizModel;
 import fr.wcs.dangerousquiz.Models.UserModel;
 import fr.wcs.dangerousquiz.R;
@@ -27,8 +27,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private UserModel mUser;
     private TextView mQuestionTextView, mCardViewText1, mCardViewText2, mCardViewText3, mCardViewText4;
     private CardView mCardView1, mCardView2, mCardView3, mCardView4;
-    private List<Question> mQuestionList = new ArrayList<>();
-    private Question mCurrentQuestion = new Question();
+    private List<QuestionModel> mQuestionModelList = new ArrayList<>();
+    private QuestionModel mCurrentQuestionModel = new QuestionModel();
     private int mNumberOfQuestions = 0, mScore, mPosition;
 
     @Override
@@ -40,12 +40,12 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         mQuizController = QuizController.getInstance();
 
         QuizModel quizModel = mQuizController.getSelectedQuiz();
-        mQuestionList = quizModel.getQuestionList();
+        mQuestionModelList = quizModel.getQuestionList();
 
         mUser = mUserController.getUser();
         mScore = mUser.getScore();
 
-        mNumberOfQuestions = mQuestionList.size();
+        mNumberOfQuestions = mQuestionModelList.size();
 
         mQuestionTextView = findViewById(R.id.textViewGameQuestion);
         mCardView1 = findViewById(R.id.cardViewAnswer1);
@@ -68,33 +68,33 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         mCardView4.setTag(3);
 
         mPosition = 0;
-        mCurrentQuestion = generateNewQuestion(mQuestionList);
-        displayQuestion(mCurrentQuestion);
+        mCurrentQuestionModel = generateNewQuestion(mQuestionModelList);
+        displayQuestion(mCurrentQuestionModel);
     }
 
-    private Question generateNewQuestion(List<Question> questionList) {
-        if (mPosition < questionList.size()) {
-            Question newQuestion = questionList.get(mPosition);
-            return newQuestion;
+    private QuestionModel generateNewQuestion(List<QuestionModel> questionModelList) {
+        if (mPosition < questionModelList.size()) {
+            QuestionModel newQuestionModel = questionModelList.get(mPosition);
+            return newQuestionModel;
         } else {
             endGame();
         }
         return null;
     }
 
-    private void displayQuestion(final Question question) {
-        mQuestionTextView.setText(question.getQuestion());
-        mCardViewText1.setText(question.getChoiceList().get(0));
-        mCardViewText2.setText(question.getChoiceList().get(1));
-        mCardViewText3.setText(question.getChoiceList().get(2));
-        mCardViewText4.setText(question.getChoiceList().get(3));
+    private void displayQuestion(final QuestionModel questionModel) {
+        mQuestionTextView.setText(questionModel.getQuestion());
+        mCardViewText1.setText(questionModel.getChoiceList().get(0));
+        mCardViewText2.setText(questionModel.getChoiceList().get(1));
+        mCardViewText3.setText(questionModel.getChoiceList().get(2));
+        mCardViewText4.setText(questionModel.getChoiceList().get(3));
     }
 
     @Override
     public void onClick(View v) {
         int responseIndex = (int) v.getTag();
 
-        if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
+        if (responseIndex == mCurrentQuestionModel.getAnswerIndex()) {
             // Good answer
             switch (responseIndex){
                 case 0:
@@ -153,8 +153,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
                     endGame();
                 } else {
                     mPosition++;
-                    mCurrentQuestion = generateNewQuestion(mQuestionList);
-                    displayQuestion(mCurrentQuestion);
+                    mCurrentQuestionModel = generateNewQuestion(mQuestionModelList);
+                    displayQuestion(mCurrentQuestionModel);
                 }
             }
         }, 1000);

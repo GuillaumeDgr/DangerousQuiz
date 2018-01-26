@@ -56,22 +56,24 @@ public class SwipeDeckAdapter extends BaseAdapter {
 
         holder.mTextViewQuizName.setText(quizModel.getQuizName());
         holder.mTextViewQuizTheme.setText(quizModel.getQuizTheme());
+        holder.mTextViewQuizDifficulty.setText(quizModel.getQuizLevel());
         holder.mTextViewQuizQuestionList.setText(quizModel.getQuestionList().toString());
         holder.mTextViewQuizCreatorId.setText(quizModel.getCreatorId());
-        holder.mTextViewQuizId.setText(quizModel.getQuizId());
+        holder.mTextViewQuizId.setText(quizModel.getCreatorName());
 
         return convertView;
     }
 
     private class ViewHolder {
 
-        private TextView mTextViewQuizName, mTextViewQuizTheme, mTextViewQuizQuestionList, mTextViewQuizCreatorId,
-                mTextViewQuizId;
+        private TextView mTextViewQuizName, mTextViewQuizTheme, mTextViewQuizDifficulty, mTextViewQuizQuestionList,
+                mTextViewQuizCreatorId, mTextViewQuizId;
 
         public ViewHolder(final View view) {
 
             mTextViewQuizName = view.findViewById(R.id.textViewQuizName);
             mTextViewQuizTheme = view.findViewById(R.id.textViewQuizTheme);
+            mTextViewQuizDifficulty = view.findViewById(R.id.textViewQuizDifficulty);
             mTextViewQuizQuestionList = view.findViewById(R.id.textViewQuizQuestionList);
             mTextViewQuizCreatorId = view.findViewById(R.id.textViewQuizCreatorId);
             mTextViewQuizId = view.findViewById(R.id.textViewQuizId);
