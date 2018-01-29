@@ -1,8 +1,7 @@
 package fr.wcs.dangerousquiz.Activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.Nullable;
+import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,8 +12,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import fr.wcs.dangerousquiz.Controllers.AuthController;
 import fr.wcs.dangerousquiz.Controllers.QuizController;
 import fr.wcs.dangerousquiz.Controllers.UserController;
@@ -22,18 +27,18 @@ import fr.wcs.dangerousquiz.Models.UserModel;
 import fr.wcs.dangerousquiz.R;
 
 import static fr.wcs.dangerousquiz.Utils.Constants.NAVIGATION_ITEM;
-import static fr.wcs.dangerousquiz.Utils.Constants.PLAY_INDEX;
+import static fr.wcs.dangerousquiz.Utils.Constants.PROFILE_INDEX;
 import static fr.wcs.dangerousquiz.Utils.Constants.SCORE_INDEX;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AuthController mAuthController;
-    private UserController mUserController;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
     private ActionBarDrawerToggle mToggle;
     private FragmentManager mFragmentManager;
     private Toolbar mToolbarMainActivity;
+    private CircleImageView mImageViewAvatarTopRightCorner;
     private int mCurrentFragmentId = -1;
 
     @Override
@@ -45,14 +50,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAuthController.setAuthListener(new AuthController.AuthListener() {
             @Override
             public void onSuccess() {
-                mUserController = UserController.getInstance();
-            }
 
+            }
             @Override
             public void onFailure(String error) {
 
             }
-
             @Override
             public void onSignOut() {
             }
@@ -79,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mFragmentManager = getSupportFragmentManager();
         onNavigationItemSelected(mNavigationView.getMenu().getItem(itemIndex));
         mNavigationView.getMenu().getItem(itemIndex).setChecked(true);
+
+        mImageViewAvatarTopRightCorner = findViewById(R.id.circleImageViewAvatarTopRightCorner);
+//        loadUserAvatar();
     }
 
     // Drawer Menu
@@ -100,15 +106,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-//        switch (id) {
-//            case R.id.action_messages:
-//                if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-//                    mDrawerLayout.closeDrawer(GravityCompat.START);
-//                }
-//                startActivity(new Intent(MainActivity.this, ConversationsActivity.class));
-//                return true;
-//
-//        }
+        switch (id) {
+            case R.id.action_profile:
+                if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                }
+//                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                goToProfileFragment();
+                return true;
+
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -133,6 +140,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.drawer_best_scores:
                     fragmentClass = ScoreFragment.class;
                     break;
+                case R.id.drawer_profile:
+                    fragmentClass = ProfileFragment.class;
+                    break;
                 case R.id.drawer_sign_out:
                     signOut();
                     break;
@@ -151,12 +161,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    public void goToPlayFragment() {
-        onNavigationItemSelected(mNavigationView.getMenu().getItem(PLAY_INDEX));
-    }
-
-    public void goToScoreFragment() {
-        onNavigationItemSelected(mNavigationView.getMenu().getItem(SCORE_INDEX));
+    public void goToProfileFragment() {
+        onNavigationItemSelected(mNavigationView.getMenu().getItem(PROFILE_INDEX));
     }
 
     private void signOut() {
@@ -166,5 +172,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = new Intent(MainActivity.this, SignInActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_toolbar, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_profile);
+        View actionView = menuItem.getActionView();
+        mImageViewAvatarTopRightCorner = actionView.findViewById(R.id.circleImageViewAvatarTopRightCorner);
+        UserModel user = UserController.getInstance().getUser();
+        Glide.with(this)
+                .load(user.getAvatar())
+                .into(mImageViewAvatarTopRightCorner);
+        actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
+        return true;
     }
 }

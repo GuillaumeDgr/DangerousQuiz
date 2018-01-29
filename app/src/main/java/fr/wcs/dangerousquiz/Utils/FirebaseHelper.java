@@ -21,6 +21,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import static fr.wcs.dangerousquiz.Utils.Constants.AVATARS_STORAGE_ENTRY;
+
 /**
  * Created by adphi on 16/11/17.
  */
@@ -62,10 +64,10 @@ public class FirebaseHelper {
      * @param userUid
      * @return the FirebaseHelper instance to set the UploadImageListener
      */
-//    public static FirebaseHelper uploadAvatar(Drawable drawable, String userUid) {
-//        StorageReference avatarReference = getsStorage().getReference(AVATARS_STORAGE_ENTRY).child(userUid);
-//        return uploadImage(avatarReference, drawable);
-//    }
+    public static FirebaseHelper uploadAvatar(Drawable drawable, String userUid) {
+        StorageReference avatarReference = getsStorage().getReference(AVATARS_STORAGE_ENTRY).child(userUid);
+        return uploadImage(avatarReference, drawable);
+    }
 
     /**
      * Helper Method uploading a Drawable to Firebase.
@@ -74,10 +76,10 @@ public class FirebaseHelper {
      * @param drawable the drawable to store.
      * @return the FirebaseHelper instance to set the UploadImageListener
      */
-//    public static FirebaseHelper uploadImage(StorageReference reference, Drawable drawable) {
-//        Bitmap image = ((BitmapDrawable) drawable).getBitmap();
-//        return uploadImage(reference, image);
-//    }
+    public static FirebaseHelper uploadImage(StorageReference reference, Drawable drawable) {
+        Bitmap image = ((BitmapDrawable) drawable).getBitmap();
+        return uploadImage(reference, image);
+    }
 
     /**
      * Helper Method uploading a Bitmap to Firebase.
@@ -85,24 +87,24 @@ public class FirebaseHelper {
      * @param bitmap
      * @return the FirebaseHelper instance to set the UploadImageListener
      */
-//    public static FirebaseHelper uploadImage(StorageReference reference, Bitmap bitmap) {
-//        final FirebaseHelper fh = new FirebaseHelper();
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, baos);
-//        byte[] data = baos.toByteArray();
-//        UploadTask uploadTask = reference.putBytes(data);
-//        uploadTask.addOnSuccessListener(taskSnapshot -> {
-//            Uri imageUri = taskSnapshot.getDownloadUrl();
-//            if(fh.mUploadImageListener != null) {
-//                fh.mUploadImageListener.onSuccess(imageUri);
-//            }
-//        }).addOnFailureListener(e -> {
-//            if (fh.mUploadImageListener != null) {
-//                fh.mUploadImageListener.onFailure(e.getMessage());
-//            }
-//        });
-//        return fh;
-//    }
+    public static FirebaseHelper uploadImage(StorageReference reference, Bitmap bitmap) {
+        final FirebaseHelper fh = new FirebaseHelper();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, baos);
+        byte[] data = baos.toByteArray();
+        UploadTask uploadTask = reference.putBytes(data);
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            Uri imageUri = taskSnapshot.getDownloadUrl();
+            if(fh.mUploadImageListener != null) {
+                fh.mUploadImageListener.onSuccess(imageUri);
+            }
+        }).addOnFailureListener(e -> {
+            if (fh.mUploadImageListener != null) {
+                fh.mUploadImageListener.onFailure(e.getMessage());
+            }
+        });
+        return fh;
+    }
 
     /**
      * Sets the upload listener.

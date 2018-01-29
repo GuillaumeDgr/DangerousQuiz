@@ -27,6 +27,7 @@ public class UserController {
     private UserModel mUser = null;
     private DatabaseReference mDatabaseReference;
     private UserCreatedListener mUserCreatedListener = null;
+    private UserReadyListener mUserReadyListener = null;
 
     private UserController(){
         if(sInstance != null) {
@@ -61,6 +62,9 @@ public class UserController {
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 if (mUser != null) {
                     mUser = userModel;
+                }
+                if(mUserReadyListener != null) {
+                    mUserReadyListener.onUserReady(mUser);
                 }
             }
             @Override
@@ -105,6 +109,12 @@ public class UserController {
         mDatabaseReference.child("score").setValue(score);
     }
 
+    public void setAvatar(String avatar) {
+        mUser.setAvatar(avatar);
+        mDatabaseReference.child("avatar").setValue(avatar);
+
+    }
+
     public interface UserCreatedListener {
         void onSuccess(boolean success, @Nullable UserModel userModel, @Nullable Exception e);
         void onFailure(String error);
@@ -121,4 +131,18 @@ public class UserController {
     public static void destroy(){
         sInstance = null;
     }
+
+    public interface UserReadyListener {
+        void onUserReady(UserModel user);
+    }
+
+    public void setUserReadyListener(UserReadyListener userReadyListener) {
+        mUserReadyListener = userReadyListener;
+
+    }
+
+    public void removeUserReadyListener() {
+        mUserReadyListener = null;
+    }
+
 }

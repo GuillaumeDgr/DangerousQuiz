@@ -36,30 +36,24 @@ public class AuthController {
         mUser = mAuth.getCurrentUser();
 
         // Firebase Auth Listener
-        mFirebaseAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                mUser = firebaseAuth.getCurrentUser();
-                if (mUser != null) {
-                    mUser = mAuth.getCurrentUser();
-                    connectionSuccess();
-                } else {
-                    // User is signed out
-                    connectionClose();
-                }
+        mFirebaseAuthListener = firebaseAuth -> {
+            mUser = firebaseAuth.getCurrentUser();
+            if (mUser != null) {
+                mUser = mAuth.getCurrentUser();
+                connectionSuccess();
+            } else {
+                // User is signed out
+                connectionClose();
             }
         };
 
         // Firebase Auth Completed Listener
-        mFirebaseAuthCompleteListener = new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    mUser = mAuth.getCurrentUser();
-                    connectionSuccess();
-                } else {
-                    connectionFailure(task.getException().getMessage().toString());
-                }
+        mFirebaseAuthCompleteListener = task -> {
+            if (task.isSuccessful()) {
+                mUser = mAuth.getCurrentUser();
+                connectionSuccess();
+            } else {
+                connectionFailure(task.getException().getMessage().toString());
             }
         };
     }

@@ -42,7 +42,7 @@
     <string name="error_too_short_password">Mot de passe trop court (minimum 6 caractères).</string>
 
     // Create Account
-    <string name="registration_in_progress">Inscription ...</string>
+    <string name="registration_in_progress">Registration in progress...</string>
     <string name="add_questionmodel_1">Add first question</string>
     <string name="add_questionmodel_2">Add second question</string>
     <string name="add_questionmodel_3">Add third question</string>
@@ -90,6 +90,7 @@
     <string name="confirm">Confirm</string>
     <string name="next_quiz">Next\nquiz</string>
     <string name="play_this_quiz">Play\nquiz</string>
+    <string name="profile">Profile</string>
 
 
 </resources>

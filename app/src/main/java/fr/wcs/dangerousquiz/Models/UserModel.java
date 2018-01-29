@@ -5,6 +5,7 @@ public class UserModel {
     private String firstName = "";
     private int score = 0;
     private String uid = "";
+    private String avatar = "";
 
     public UserModel() {}
 
@@ -30,5 +31,13 @@ public class UserModel {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
