@@ -10,10 +10,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.wcs.dangerousquiz.Models.QuizModel;
 import fr.wcs.dangerousquiz.Models.UserModel;
 import fr.wcs.dangerousquiz.Utils.FirebaseHelper;
 
+import static fr.wcs.dangerousquiz.Utils.Constants.QUIZ_ENTRY;
 import static fr.wcs.dangerousquiz.Utils.Constants.USERS_ENTRY;
 
 /**
@@ -26,6 +30,7 @@ public class UserController {
     private AuthController mAuthController;
     private UserModel mUser = null;
     private DatabaseReference mDatabaseReference;
+    private DatabaseReference mQuizReference;
     private UserCreatedListener mUserCreatedListener = null;
     private UserReadyListener mUserReadyListener = null;
 

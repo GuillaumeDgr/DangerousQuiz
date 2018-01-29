@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.wcs.dangerousquiz.Models.QuestionModel;
@@ -16,6 +17,7 @@ import fr.wcs.dangerousquiz.Models.UserModel;
 import fr.wcs.dangerousquiz.Utils.FirebaseHelper;
 
 import static fr.wcs.dangerousquiz.Utils.Constants.QUIZ_ENTRY;
+import static fr.wcs.dangerousquiz.Utils.Constants.USERS_ENTRY;
 
 /**
  * Created by apprenti on 1/22/18.
@@ -26,10 +28,11 @@ public class QuizController {
     private static volatile QuizController sInstance = null;
     private QuizBuilder mQuizBuilder = null;
     private UserModel mUser;
-    private String mUserId;
-    private String mUserName;
+    private String mUserId, mUserName;
+    private List<String> mPlayersList = new ArrayList<>();
+    private List<String> mQuizDone = new ArrayList<>();
     private FirebaseDatabase mDatabaseReference;
-    private DatabaseReference mQuizRef;
+    private DatabaseReference mQuizRef, mUserRef;
     private QuizCreatedListener mQuizCreatedListener = null;
     private QuizMatchedListener mQuizMatchedListener = null;
     private QuizModel mSelectedQuiz = null;
@@ -46,6 +49,7 @@ public class QuizController {
 
         mDatabaseReference = FirebaseHelper.getDatabase();
         mQuizRef = mDatabaseReference.getReference().child(QUIZ_ENTRY);
+        mUserRef = mDatabaseReference.getReference().child(USERS_ENTRY);
     }
 
     // Instance
@@ -114,7 +118,8 @@ public class QuizController {
 
     // Match Quiz Method
     public void matchQuiz(QuizModel quizModel) {
-        mQuizRef.child(quizModel.getQuizId()).child("players").setValue(mUser.getUid())
+        mPlayersList.add(mUser.getUid());
+        mQuizRef.child(quizModel.getQuizId()).child("players").setValue(mPlayersList)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -123,6 +128,24 @@ public class QuizController {
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (mQuizMatchedListener != null) {
+                    mQuizMatchedListener.onFailure(e.getMessage());
+                }
+            }
+        });
+
+        mQuizDone.add(quizModel.getQuizId());
+        mUserRef.child(mUser.getUid()).child("quizDone").setValue(mQuizDone)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        if (mQuizMatchedListener != null) {
+                            mQuizMatchedListener.onSuccess(true, quizModel, null);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 if (mQuizMatchedListener != null) {

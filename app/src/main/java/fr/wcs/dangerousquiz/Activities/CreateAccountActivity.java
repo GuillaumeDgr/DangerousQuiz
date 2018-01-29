@@ -51,13 +51,15 @@ public class CreateAccountActivity extends AppCompatActivity implements AuthCont
         mTextViewUserMail = findViewById(R.id.textViewUserMail);
         mTextViewUserPassword = findViewById(R.id.textViewUserPassword);
 
-        Uri uri = mAuthController.getUser().getPhotoUrl();
-
-        if(uri != null){
-            Glide.with(this)
-                    .load(uri)
-                    .into(mImageViewAvatar);
-        }
+//        Uri uri = mAuthController.getUser().getPhotoUrl();
+//
+//        if(uri != null){
+//            Glide.with(this)
+//                    .load(uri)
+//                    .into(mImageViewAvatar);
+//        } else {
+//            mImageViewAvatar.setImageDrawable(getResources().getDrawable(R.drawable.avatar));
+//        }
 
         mImageViewAvatar.setOnClickListener(new View.OnClickListener() {
             @Override

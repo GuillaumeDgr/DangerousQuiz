@@ -1,36 +1,32 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fr.wcs.dangerousquiz.Activities.ProfileFragment">
 
     <android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="fr.wildcodeschool.steeryfit.UI.Fragments.ProfileFragment">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageViewProfilBackground"
+            android:id="@+id/imageViewUserAvatarBackground"
             android:layout_width="0dp"
-            android:layout_height="128dp"
+            android:layout_height="170dp"
             android:alpha="0.6"
             android:scaleType="centerCrop"
+            tools:src="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@color/colorAccent"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
+            android:id="@+id/linearLayoutHeader"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="70dp"
             android:clipToPadding="false"
             android:paddingBottom="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,79 +37,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="4dp"
-                app:cardElevation="4dp"
-                app:contentPaddingTop="8dp">
+                app:cardElevation="4dp">
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:background="@color/white"
                     android:padding="8dp">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/ic_filter"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
-                    <EditText
-                        android:id="@+id/editTextUserName"
+                    <TextView
+                        android:id="@+id/textViewUserFirstName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="8dp"
                         android:background="@android:color/transparent"
-                        android:inputType="textPersonName"
                         android:paddingTop="56dp"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
-                        app:layout_constraintBottom_toTopOf="@+id/layoutProfileName"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="John"/>
-
-                    <LinearLayout
-                        android:id="@+id/layoutProfileName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.502"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextUserName">
-
-                        <EditText
-                            android:id="@+id/editTextProfileFirstName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@android:color/transparent"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp"
-                            tools:text="Boby"/>
-
-                        <EditText
-                            android:id="@+id/editTextProfileLastName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@android:color/transparent"
-                            android:inputType="textPersonName"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp"
-                            tools:text="Francky"/>
-
-                    </LinearLayout>
+                        tools:text="User Name"/>
 
                 </android.support.constraint.ConstraintLayout>
 
@@ -128,188 +75,104 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_filter"
+            tools:src="@drawable/avatar"
             app:civ_border_width="2dp"
             app:civ_border_color="@color/white"/>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cardViewProfileDescription"
-            android:layout_width="0dp"
+            android:id="@+id/cardViewUserScore"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="false"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:minHeight="56dp"
-            android:padding="16dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/cardViewProfileDetails"
+            app:layout_constraintBottom_toTopOf="@id/cardViewUserQuizDone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutHeader">
 
-            <EditText
-                android:id="@+id/editTextUserScore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:inputType="textCapSentences"
-                android:maxLines="1"
-                android:lines="1"
-                android:ellipsize="end"
-                android:imeOptions="actionDone"
-                android:textColor="@color/colorPrimary"
-                tools:text="Score"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_score"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/textViewUserScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Score"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/cardViewProfileDetails"
-            android:layout_width="0dp"
+            android:id="@+id/cardViewUserQuizDone"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="false"
+            android:background="@color/white"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp"
-            app:layout_constraintBottom_toTopOf="@id/recyclerViewProfileSports"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardViewProfileDescription">
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imageViewProfileCalendar"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/ic_filter"
-                    app:layout_constraintBottom_toTopOf="@+id/imageViewProfileAge"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView
-                    android:id="@+id/textViewProfileBirthDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewProfileCalendar"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewProfileCalendar"
-                    app:layout_constraintTop_toTopOf="@+id/imageViewProfileCalendar"
-                    tools:text="12/12/1991"/>
-
-                <ImageView
-                    android:id="@+id/imageViewProfileAge"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/avatar"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewProfileCalendar"/>
-
-                <TextView
-                    android:id="@+id/textViewProfileAge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewProfileAge"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewProfileAge"
-                    app:layout_constraintTop_toTopOf="@+id/imageViewProfileAge"
-                    tools:text="27 ans"/>
-
-                <ImageView
-                    android:id="@+id/imageViewProfileLocation"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/avatar"
-                    app:layout_constraintBottom_toTopOf="@+id/imageViewProfilDistance"
-                    app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView
-                    android:id="@+id/textViewProfileCity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewProfileLocation"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewProfileLocation"
-                    app:layout_constraintTop_toTopOf="@+id/imageViewProfileLocation"
-                    tools:text="Toulouse"/>
-
-                <ImageView
-                    android:id="@+id/imageViewProfilDistance"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/avatar"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewProfileLocation"/>
-
-                <TextView
-                    android:id="@+id/textViewProfileDistance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewProfilDistance"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewProfilDistance"
-                    app:layout_constraintTop_toTopOf="@+id/imageViewProfilDistance"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:text="10 km"/>
-
-                <android.support.constraint.Guideline
-                    android:id="@+id/guideline2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.5"/>
-
-            </android.support.constraint.ConstraintLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewProfileSports"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewProfileDetails"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardViewUserScore">
 
-        <ImageView
-            android:id="@+id/imageViewProfileEdit"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/your_quiz"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerViewQuizDone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@android:color/transparent"
+                    android:clipToPadding="false"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
     </android.support.constraint.ConstraintLayout>
 
