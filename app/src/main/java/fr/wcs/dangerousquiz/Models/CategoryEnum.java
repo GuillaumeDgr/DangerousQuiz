@@ -18,7 +18,7 @@ public class CategoryEnum {
         NATURE("NATURE"),
         NEWS("NEWS"),
         PEOPLE("PEOPLE"),
-        OTHER("OTHER");
+        GENERALKNOWLEDGE("GENERAL KNOWLEDGE");
 
         private final String stringValue;
 

@@ -83,15 +83,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    protected void onStart() {
-        mAuthController.attach();
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        mAuthController.detach();
-        super.onStop();
-    }
+//    @Override
+//    protected void onStart() {
+//        mAuthController.attach();
+//        super.onStart();
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        mAuthController.detach();
+//        super.onStop();
+//    }
 }

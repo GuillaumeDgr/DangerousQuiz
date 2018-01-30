@@ -17,12 +17,29 @@
         app:cardPreventCornerOverlap="false"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="4dp"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="8dp"
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageViewCreator"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/avatar"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textViewQuizName"
@@ -33,7 +50,6 @@
                 android:hint="@string/quiz_name"
                 android:layout_gravity="center"
                 android:textColor="@color/colorAccent"
-                android:textSize="20sp"
                 android:gravity="center"/>
 
             <TextView
@@ -44,7 +60,17 @@
                 android:layout_margin="5dp"
                 android:hint="@string/quiz_theme"
                 android:textColor="@color/colorAccent"
-                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/textViewQuizDifficulty"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:hint="@string/quiz_level"
+                android:textColor="@color/colorAccent"
                 android:layout_gravity="center"
                 android:gravity="center"/>
 

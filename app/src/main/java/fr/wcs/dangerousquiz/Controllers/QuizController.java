@@ -5,8 +5,11 @@ import android.support.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,7 @@ public class QuizController {
     private QuizCreatedListener mQuizCreatedListener = null;
     private QuizMatchedListener mQuizMatchedListener = null;
     private QuizModel mSelectedQuiz = null;
+    private UserModel mCreatorModel = new UserModel();
 
     // Constructor
     private QuizController() {
@@ -162,6 +166,21 @@ public class QuizController {
 
     public void setOnQuizMatchedListener(QuizMatchedListener quizMatchedListener) {
         mQuizMatchedListener = quizMatchedListener;
+    }
+
+    // Get Quiz Creator
+    public UserModel getQuizCreator(String uid) {
+        mUserRef = mDatabaseReference.getReference().child(USERS_ENTRY);
+        mUserRef.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                mCreatorModel = snapshot.getValue(UserModel.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+        return mCreatorModel;
     }
 
     // Builder

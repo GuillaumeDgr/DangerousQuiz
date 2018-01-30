@@ -6,9 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import fr.wcs.dangerousquiz.Controllers.QuizController;
+import fr.wcs.dangerousquiz.Controllers.UserController;
 import fr.wcs.dangerousquiz.Models.QuizModel;
+import fr.wcs.dangerousquiz.Models.UserModel;
 import fr.wcs.dangerousquiz.R;
 
 /**
@@ -58,8 +65,13 @@ public class SwipeDeckAdapter extends BaseAdapter {
         holder.mTextViewQuizTheme.setText(quizModel.getQuizTheme());
         holder.mTextViewQuizDifficulty.setText(quizModel.getQuizLevel());
         holder.mTextViewQuizQuestionList.setText(quizModel.getQuestionList().toString());
-        holder.mTextViewQuizCreatorId.setText(quizModel.getCreatorId());
-        holder.mTextViewQuizId.setText(quizModel.getCreatorName());
+
+        UserModel creatorModel = QuizController.getInstance().getQuizCreator(quizModel.getCreatorId());
+        holder.mTextViewQuizCreatorName.setText(creatorModel.getFirstName());
+        holder.mTextViewQuizCreatorScore.setText(String.valueOf(creatorModel.getScore()));
+        Glide.with(convertView.getContext())
+                .load(creatorModel.getAvatar())
+                .into(holder.mCircleImageViewQuizCreatorAvatar);
 
         return convertView;
     }
@@ -67,7 +79,8 @@ public class SwipeDeckAdapter extends BaseAdapter {
     private class ViewHolder {
 
         private TextView mTextViewQuizName, mTextViewQuizTheme, mTextViewQuizDifficulty, mTextViewQuizQuestionList,
-                mTextViewQuizCreatorId, mTextViewQuizId;
+                mTextViewQuizCreatorName, mTextViewQuizCreatorScore;
+        private CircleImageView mCircleImageViewQuizCreatorAvatar;
 
         public ViewHolder(final View view) {
 
@@ -75,8 +88,10 @@ public class SwipeDeckAdapter extends BaseAdapter {
             mTextViewQuizTheme = view.findViewById(R.id.textViewQuizTheme);
             mTextViewQuizDifficulty = view.findViewById(R.id.textViewQuizDifficulty);
             mTextViewQuizQuestionList = view.findViewById(R.id.textViewQuizQuestionList);
-            mTextViewQuizCreatorId = view.findViewById(R.id.textViewQuizCreatorId);
-            mTextViewQuizId = view.findViewById(R.id.textViewQuizId);
+
+            mTextViewQuizCreatorName = view.findViewById(R.id.textViewQuizCreatorName);
+            mTextViewQuizCreatorScore = view.findViewById(R.id.textViewQuizCreatorScore);
+            mCircleImageViewQuizCreatorAvatar = view.findViewById(R.id.circleImageViewQuizCreatorAvatar);
         }
     }
 }

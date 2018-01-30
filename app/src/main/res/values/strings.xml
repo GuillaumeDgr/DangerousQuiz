@@ -92,12 +92,17 @@
     <string name="play_this_quiz">Play\nquiz</string>
     <string name="profile">Profile</string>
     <string name="your_stats">Your stats :</string>
-    <string name="quiz_name">Quiz Name</string>
-    <string name="quiz_theme">Quiz Theme</string>
+    <string name="quiz_name">Quiz\nName</string>
+    <string name="quiz_theme">Quiz\nTheme</string>
     <string name="quiz_themes">Quiz themes :</string>
     <string name="quiz_names">Quiz names :</string>
     <string name="your_quiz">Quiz you have done :</string>
     <string name="your_score">Your score :</string>
+    <string name="quiz_level">Quiz Level</string>
+    <string name="number_of_questions">Number of questions</string>
+    <string name="quiz_created_by">Quiz created by :</string>
+    <string name="creator_name">Creator name</string>
+    <string name="creator_score">Creator score</string>
 
 
 </resources>

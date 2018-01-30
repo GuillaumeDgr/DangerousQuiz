@@ -19,6 +19,11 @@ public class QuizModel implements Parcelable {
     private String creatorName;
     private String quizId;
     private String quizLevel;
+    private List<String> players = new ArrayList<>();
+
+//    public enum State {
+//        DONE, PENDING
+//    }
 
     public QuizModel() {}
 
@@ -104,6 +109,34 @@ public class QuizModel implements Parcelable {
     public void setQuizLevel(String quizLevel) {
         this.quizLevel = quizLevel;
     }
+
+//    public List<String> getPlayers() {
+//        return players;
+//    }
+//
+//    public void setPlayers(List<String> players) {
+//        this.players = players;
+//    }
+
+//    public State getState(QuizModel quizModel) {
+//        String uid = quizModel.getQuizId();
+//        return getState(uid);
+//    }
+
+//    public State getState(String uid) {
+//        if(players.contains(uid)){
+//            return State.DONE;
+//        }
+//        return State.PENDING;
+//    }
+
+//    public State getState(String uid) {
+//        for(String playerIdList: players) {
+//            if(playerIdList.contains(uid))
+//                return State.DONE;
+//        }
+//        return State.PENDING;
+//    }
 
     @Override
     public int describeContents() {

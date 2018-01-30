@@ -173,8 +173,8 @@ public class CreateQuizFragment extends Fragment {
                     case PEOPLE:
                         mQuizTheme = CategoryEnum.Category.PEOPLE.toString();
                         break;
-                    case OTHER:
-                        mQuizTheme = CategoryEnum.Category.OTHER.toString();
+                    case GENERALKNOWLEDGE:
+                        mQuizTheme = CategoryEnum.Category.GENERALKNOWLEDGE.toString();
                         break;
                 }
             }

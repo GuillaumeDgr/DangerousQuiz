@@ -6,8 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import fr.wcs.dangerousquiz.Controllers.QuizController;
 import fr.wcs.dangerousquiz.Models.QuizModel;
+import fr.wcs.dangerousquiz.Models.UserModel;
 import fr.wcs.dangerousquiz.R;
 
 /**
@@ -37,6 +43,12 @@ public class QuizDoneAdapter extends RecyclerView.Adapter<QuizDoneAdapter.QuizVi
 
         holder.mTextViewQuizName.setText(quizModel.getQuizName());
         holder.mTextViewQuizTheme.setText(quizModel.getQuizTheme());
+        holder.mTextViewQuizDifficulty.setText(quizModel.getQuizLevel());
+
+        UserModel creatorModel = QuizController.getInstance().getQuizCreator(quizModel.getCreatorId());
+        Glide.with(holder.itemView.getContext())
+                .load(creatorModel.getAvatar())
+                .into(holder.mCircleImageViewCreator);
     }
 
     @Override
@@ -46,13 +58,16 @@ public class QuizDoneAdapter extends RecyclerView.Adapter<QuizDoneAdapter.QuizVi
 
     public class QuizViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewQuizName, mTextViewQuizTheme;
+        TextView mTextViewQuizName, mTextViewQuizTheme, mTextViewQuizDifficulty;
+        CircleImageView mCircleImageViewCreator;
 
         public QuizViewHolder(View itemView) {
             super(itemView);
 
             mTextViewQuizName = itemView.findViewById(R.id.textViewQuizName);
             mTextViewQuizTheme = itemView.findViewById(R.id.textViewQuizTheme);
+            mTextViewQuizDifficulty = itemView.findViewById(R.id.textViewQuizDifficulty);
+            mCircleImageViewCreator = itemView.findViewById(R.id.circleImageViewCreator);
         }
     }
 }

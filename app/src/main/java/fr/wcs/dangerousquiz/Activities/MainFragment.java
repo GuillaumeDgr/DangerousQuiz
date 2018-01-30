@@ -150,12 +150,38 @@ public class MainFragment extends Fragment {
     private void loadQuizList() {
         if(! mSwipeRefreshLayout.isRefreshing()) mSwipeRefreshLayout.setRefreshing(true);
 
+        mUserController = UserController.getInstance();
+        mUser = mUserController.getUser();
+
         mDatabaseReference = FirebaseHelper.getDatabase().getReference().child(QUIZ_ENTRY);
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 for (DataSnapshot snap : snapshot.getChildren()) {
-                    mQuizModelList.add(snap.getValue(QuizModel.class));
+                    QuizModel quizModel = snap.getValue(QuizModel.class);
+//                    if (quizModel.getState(mUser.getUid()) == QuizModel.State.DONE) {
+//                        mQuizModelList.remove(quizModel);
+//                    }
+                    mQuizModelList.add(quizModel);
+
+
+//                    mDatabaseReference.child(quizModel.getQuizId()).child("players")
+//                            .addValueEventListener(new ValueEventListener() {
+//                                @Override
+//                                public void onDataChange(DataSnapshot snapshot) {
+//                                    for (DataSnapshot snap : snapshot.getChildren()) {
+//                                        String userModelId = snap.getValue(String.class);
+//                                        if (userModelId.equals(mUser.getUid())) {
+//                                            mQuizModelList.remove(quizModel);
+//                                        }
+//                                        mQuizModelList.add(quizModel);
+//                                    }
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(DatabaseError error) {
+//                                }
+//                            });
                 }
                 mSwipeDeckAdapter.notifyDataSetChanged();
             }

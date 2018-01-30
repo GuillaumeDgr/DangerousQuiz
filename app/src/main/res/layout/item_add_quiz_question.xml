@@ -17,19 +17,21 @@
             android:id="@+id/editTextAddQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_margin="10dp"
-            android:textColorHint="@color/colorPrimary"
-            android:hint="@string/add_your_question_here"/>
+            android:gravity="center"
+            android:hint="@string/add_your_question_here"
+            android:inputType="textCapSentences"
+            android:textColorHint="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/editTextAddAnswer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_margin="10dp"
-            android:textColorHint="@color/colorPrimary"
-            android:hint="@string/first_answer"/>
+            android:gravity="center"
+            android:hint="@string/first_answer"
+            android:inputType="textCapSentences"
+            android:textColorHint="@color/colorPrimary" />
 
         <EditText
             android:id="@+id/editTextAddAnswer2"
@@ -37,6 +39,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="10dp"
+            android:inputType="textCapSentences"
             android:textColorHint="@color/colorPrimary"
             android:hint="@string/second_answer"/>
 
@@ -46,6 +49,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="10dp"
+            android:inputType="textCapSentences"
             android:textColorHint="@color/colorPrimary"
             android:hint="@string/third_answer"/>
 
@@ -54,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:inputType="textCapSentences"
             android:layout_margin="10dp"
             android:textColorHint="@color/colorPrimary"
             android:hint="@string/fourth_answer"/>

@@ -57,12 +57,50 @@
             android:layout_margin="10dp"/>
 
         <TextView
-            android:id="@+id/textViewQuizId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/quizid"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_margin="10dp"/>
+            android:textColor="@color/colorPrimary"
+            android:text="@string/quiz_created_by"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageViewQuizCreatorAvatar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/avatar"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewQuizCreatorName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:hint="@string/creator_name"/>
+
+                <TextView
+                    android:id="@+id/textViewQuizCreatorScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:hint="@string/creator_score"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
